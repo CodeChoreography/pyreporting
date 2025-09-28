@@ -116,7 +116,7 @@ class ProgressBarType(StrEnum):
         """Factory method to create a ProgressBar of this type"""
         if self == ProgressBarType.QT:
             # Local import ensures pyside dependency only if required
-            # pylint:disable-next=import-outside-toplevel
+            # pylint:disable-next=import-outside-toplevel,cyclic-import
             from pyreporting.progress_bar_pyside import PySideProgressBar
             return PySideProgressBar(**kwargs)
         elif self == ProgressBarType.TERMINAL:

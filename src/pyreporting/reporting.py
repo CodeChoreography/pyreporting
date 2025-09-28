@@ -1,10 +1,12 @@
+"""Error, message and progress reporting"""
+
 from dataclasses import dataclass
 from logging import DEBUG, ERROR, INFO, WARNING
 from typing import Callable, Optional
 
 from pyreporting.logger import Logger
 from pyreporting.progress import Progress
-from pyreporting.progress_bar import ProgressBarType
+from pyreporting.progress_bar import ProgressBar, ProgressBarType
 from pyreporting.util import open_path, throw_exception
 
 
@@ -44,8 +46,12 @@ class Reporting:
     def __init__(
             self,
             app_name: str = "pyreporting_default",
-            progress_type: Optional[ProgressBarType] = ProgressBarType.TERMINAL,
-            log_file_name=None, debug=False):
+            progress_type: ProgressBarType or ProgressBar =
+            ProgressBarType.TERMINAL,
+            log_file_name=None,
+            debug=False,
+            parent=None,
+            interactive: bool = True):
         """
 
         Args:
@@ -56,11 +62,14 @@ class Reporting:
             log_file_name: Specify log filename instead of using default
                 application log file directory based on app_name
             debug: set to True to log debug messages
+            interactive: set to True if used in an interactive environment,
+                         allowing for example windows to be opened
         """
-        if not isinstance(progress_type, ProgressBarType):
-            raise ValueError(f"progress_type should be a ProgressBarType enum")
+        if not isinstance(progress_type, (ProgressBar, ProgressBarType)):
+            raise ValueError("progress_type should be a ProgressBar or "
+                             "ProgressBarType enum")
 
-        self.progress = Progress(progress_type=progress_type)
+        self.progress = Progress(progress_type=progress_type, parent=parent)
         self.logger = Logger(
             app_name=app_name,
             debug=debug,
@@ -69,6 +78,7 @@ class Reporting:
         self.app_name = app_name
         self.cache = RecordCache(log_function=self.logger.log)
         self.enabled_cache_types = []
+        self.interactive = interactive
 
     def __del__(self):
         self.end_message_caching()
@@ -233,108 +243,158 @@ class Reporting:
         self.cache.show_and_clear()
         self.enabled_cache_types = []
 
-    def show_progress(self, text='Please wait', value=0, title='',
-                      hold: bool = False):
-        """Initialise progress dialog
-        Unlike update_progress(), any values not specified (left as None) will
-        be given default values and will not retain their previous values
+    def start_progress(self,
+                       value: int or None = None,
+                       step: int or None = None,
+                       label: str or None = None,
+                       title: str or None = None):
+        """Initialise and show progress dialog reporting. If a progress
+        dialog is already visible, creates a nested progress level.
+
+        Each start_progress() call must be matched by exactly one
+        complete_progress() call
 
         Args:
-            text: Text to display in progress bar
-            value: Current progress bar value, initialise at 0
-            title: Title text for the progress dialog
-            hold: set to True to keep progress visible until hide() is called
+            value: Current progress bar value, or set to None for a continuous
+                   progress bar (if supported)
+            step:  Percentage difference between progress calls. This is used
+                   when calling advance_progress() and for correctly updating
+                   nested progress calls
+            label: Text to display in progress bar, or None to keep current
+                   or default label
+            title: Title text for the progress dialog, or None to keep current
+                   or default title
         """
-        self.progress.show(label=text, value=value, title=title, hold=hold)
+        self.progress.start_progress(
+            value=value, step=step, label=label, title=title
+        )
 
     def complete_progress(self):
-        """Complete the progress dialog, and hide unless Hold is set to True"""
-        self.progress.complete()
+        """Complete the current progress dialog. If there are no other progress
+        bars currently nested then hide the dialog, otherwise return to the
+        parent progress and complete the current stage"""
+        self.progress.complete_progress()
 
-    def hide_progress(self):
-        """Hide the progress dialog"""
-        self.progress.hide()
-
-    def update_progress(self, label: Optional[str] = None,
-                        value: Optional[int] = None,
-                        title: Optional[str] = None,
-                        step: Optional[int] = None):
+    def update_progress(self,
+                        value: int or None = None,
+                        step: int or None = None,
+                        label: str or None = None,
+                        title: str or None = None):
         """Update values in the progress dialog
-        Unlike show_progress(), any values not specified (left as None) will
-        retain their previous values
+
+        Unspecified parameters for value, label or title will retain their
+        previous value.
+
+        If step is not specified, it will be computed automatically from the
+        difference between previous value updates. The step is used with
+        nested progress (push_progress and pop_progress) so that the range
+        of the nested progress will run between value and value + step
 
         Args:
-            label: Text to display in progress bar
-            value: Current progress bar value, initialise at 0
-            title: Title text for the progress dialog
-            step: The percentage change between progress updates. This is used
-                when generating nested progress updates
+            value: Current progress bar value, or set to None for a continuous
+                   progress bar (if supported)
+            step:  Percentage difference between progress calls. Used
+                   if using advance_progress() and for correctly updating
+                   nested progress calls. Computed automatically when using
+                   update_progress_stage
+            label: Text to display in progress bar, or None to keep current
+                   or default label
+            title: Title text for the progress dialog, or None to keep current
+                   or default title
         """
-        self.progress.update(value=value, step=step, label=label, title=title)
+        self.progress.update_progress(
+            value=value,
+            step=step,
+            label=label,
+            title=title
+        )
 
-    def update_progress_message(self, text: str):
-        """Change the subtext in the progress dialog"""
-        self.progress.update(label=text)
+    def advance_progress(self,
+                         step: int or None = None,
+                         label: str or None = None,
+                         title: str or None = None):
+        """Move the progress bar along one stage
 
-    def update_progress_value(self, progress_value: int):
-        """Change the percentage complete in the progress dialog, displaying if
-        necessary"""
-        self.progress.update(value=progress_value)
+        Unspecified parameters for step, label or title will retain their
+        previous value.
+
+        If step has not been specified in this call or in any previous call
+        for this nested progress bar, it will take an inferred value (if
+        one could be computed), otherwise it will be the difference between
+        the current value (0 if unspecified) and 100%
+
+        Args:
+            step:  Percentage difference between progress calls. None to keep
+                   current step value
+            label: Text to display in progress bar, or None to keep current
+                   or default label
+            title: Title text for the progress dialog, or None to keep current
+                   or default title
+        """
+        self.progress.advance_progress(
+            step=step,
+            label=label,
+            title=title
+        )
 
     def update_progress_stage(self,
-                              progress_stage: int,
+                              stage: int,
                               num_stages: int,
                               label: Optional[str] = None,
                               title: Optional[str] = None):
-        """When progress reporting consists of a number of stages, use this
-        method to ensure progress is handled correctly"""
-        self.progress.update_stage(
-            stage=progress_stage, num_stages=num_stages, label=label,
-            title=title)
+        """Update progress for an operation consisting of a set number of stages
 
-    def update_progress_and_message(self, progress_value, text):
-        """Change the percentage complete and message in the progress dialog,
-        displaying if necessary"""
-        self.progress.update(value=progress_value, label=text)
+        Specify the total number of stages to be performed and the current
+        stage number. The value and step will be computed automatically
+
+        Unspecified parameters for label or title will retain their
+        previous value
+
+        Args:
+            stage: The index of the current stage
+            num_stages: Total number of stages
+            label: The label text to display by the progress, or None to keep
+                   current text
+            title: The title of the progress dialog, or None to keep current
+                   text
+       """
+        self.progress.update_progress_stage(
+            stage=stage,
+            num_stages=num_stages,
+            label=label,
+            title=title
+        )
 
     def has_been_cancelled(self) -> bool:
         """Return True if the user has clicked Cancel in the progress dialog"""
         return self.progress.has_been_cancelled()
 
     def check_for_cancel(self):
-        """Raise Cancel exception if user has clicked Cancel"""
+        """Raise Cancel exception if user has clicked Cancel in the progress
+        dialog"""
         self.progress.check_for_cancel()
 
-    def push_progress(self):
-        """Nest progress reporting. After calling this function, subsequent
-        progress updates will modify the progress bar between the current
-        value ane the current value plus the last value_change."""
-        self.progress.push()
-
-    def pop_progress(self):
-        """Remove one layer of nested progress nesting, returning to the
-        previous progress reporting."""
-        self.progress.pop()
-
-    def clear_progress_stack(self):
-        """Clear all progress nesting"""
-        self.progress.clear_progress_stack()
-
-    def open_path(self, file_path, message):
-        # ToDo: Should be implemented where a decision can be made as to whether
-        # this is in a gui environment
-        open_path(file_path)
+    def reset_progress(self):
+        """Close all progress bars and clear all progress nesting"""
+        self.progress.reset_progress()
 
     def set_progress_parent(self, parent):
-        """Set the parent window handle for progress dialogs"""
+        """Set the GUI parent window handle for progress dialogs"""
         self.progress.set_progress_parent(parent)
+
+    def open_path(self, file_path, message):
+        """Open an OS window to the specified file path"""
+        if self.interactive:
+            open_path(file_path)
+        else:
+            print(message)
 
 
 DEFAULT_REPORTING: Optional['Reporting'] = None
 
 
 def get_reporting(error_if_not_configured: bool = False) -> Reporting:
-    global DEFAULT_REPORTING
+    """Return the current default reporting object"""
     if DEFAULT_REPORTING is not None:
         return DEFAULT_REPORTING
     if error_if_not_configured:
@@ -344,10 +404,21 @@ def get_reporting(error_if_not_configured: bool = False) -> Reporting:
 
 def configure_reporting(
         app_name: str = "pyreporting_default",
-        progress_type: Optional[ProgressBarType] = ProgressBarType.TERMINAL,
+        progress_type: ProgressBarType or ProgressBar
+                       or None = ProgressBarType.TERMINAL,
         log_file_name=None,
-        debug=False) -> Reporting:
-    global DEFAULT_REPORTING
+        debug=False
+) -> Reporting:
+    """Configure the default reporting object
+
+    Args:
+        app_name: Application name
+        progress_type: enum of type ProgressBarType specifying the type of
+                       progress bar, or a custom ProgressBar implementation
+        log_file_name: Log to specified file instead of default
+        debug:         set to True if running in debug mode
+    """
+    global DEFAULT_REPORTING  # pylint:disable=global-statement
     if DEFAULT_REPORTING is not None:
         DEFAULT_REPORTING.error(
             identifier='Reporting:DefaultAlreadyConfigured',
@@ -364,28 +435,32 @@ def configure_reporting(
     return DEFAULT_REPORTING
 
 
-@dataclass
-class PendingRecord:
-    level: int
-    prefix: str
-    identifier: str
-    text: str
-    supplementary_info: str
-    exception: Exception
-    count: int = 1
-
-
 class RecordCache:
+    """Keeps track of cached messages"""
+
+    @dataclass
+    class PendingRecord:
+        """Record of specific cached messages"""
+        level: int
+        prefix: str
+        identifier: str
+        text: str
+        supplementary_info: str
+        exception: Exception
+        count: int = 1
+
     def __init__(self, log_function: Callable):
         self.log_function = log_function
         self.cache = {}
 
-    def add(self, level, prefix, identifier, message, supplementary_info, exception):
+    def add(self, level, prefix, identifier, message, supplementary_info,
+            exception):
+        """Add message to cache"""
         key = f"{level}.{identifier}"
         if key in self.cache:
             self.cache[key].count += 1
         else:
-            self.cache[key] = PendingRecord(
+            self.cache[key] = RecordCache.PendingRecord(
                 level=level,
                 prefix=prefix,
                 identifier=identifier,
@@ -395,6 +470,7 @@ class RecordCache:
             )
 
     def show_and_clear(self):
+        """Clear the message cache and report all messages"""
         for _, record in self.cache.items():
             message = record.text
             if record.count > 1:

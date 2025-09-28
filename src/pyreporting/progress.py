@@ -3,7 +3,6 @@ This abstraction means the progress reporting is decided by the caller not the
 function itself. Also supports nested progress updates"""
 
 from dataclasses import dataclass
-from typing import Optional
 
 from pyreporting.progress_bar import ProgressBar, ProgressBarType
 from pyreporting.util import UserCancelled
@@ -49,9 +48,9 @@ class Progress:
         self.reset_progress()
 
     def start_progress(self,
-                       label: str or None = None,
                        value: int or None = None,
                        step: int or None = None,
+                       label: str or None = None,
                        title: str or None = None):
         """Initialise and show progress dialog reporting. If a progress
         dialog is already visible, creates a nested progress level.
@@ -60,11 +59,13 @@ class Progress:
         complete_progress() call
 
         Args:
-            label: Text to display in progress bar, or None to keep current
-                   or default label
             value: Current progress bar value, or set to None for a continuous
                    progress bar (if supported)
-            step:  Percentage difference between progress calls.
+            step:  Percentage difference between progress calls. This is used
+                   when calling advance_progress() and for correctly updating
+                   nested progress calls
+            label: Text to display in progress bar, or None to keep current
+                   or default label
             title: Title text for the progress dialog, or None to keep current
                    or default title
         """
@@ -73,17 +74,16 @@ class Progress:
         self.stack.push()
 
         self.update_progress(
-            label=label,
             value=value,
             step=step,
+            label=label,
             title=title
         )
 
     def complete_progress(self):
-        """Indicates completion of the current stage of progress, which will
-        hide the progress bar unless it is being held, in which case it will
-        set to 100%
-        """
+        """Complete the current progress dialog. If there are no other progress
+        bars currently nested then hide the dialog, otherwise return to the
+        parent progress and complete the current stage"""
         if not self.stack.is_empty():
             self.update_progress(value=100)
             self.stack.pop()
@@ -94,11 +94,11 @@ class Progress:
                 self._update_bar()
 
     def update_progress(self,
-                        value: Optional[int] = None,
-                        step: Optional[int] = None,
-                        label: Optional[str] = None,
-                        title: Optional[str] = None):
-        """Update the label or value of the progress bar.
+                        value: int or None = None,
+                        step: int or None = None,
+                        label: str or None = None,
+                        title: str or None = None):
+        """Update values in the progress dialog
 
         Unspecified parameters for value, label or title will retain their
         previous value.
@@ -109,10 +109,16 @@ class Progress:
         of the nested progress will run between value and value + step
 
         Args:
-            value: The progress percentage
-            step: Percentage difference between progress calls.
-            label: The label text to display by the progress
-            title: The title of the progress dialog
+            value: Current progress bar value, or set to None for a continuous
+                   progress bar (if supported)
+            step:  Percentage difference between progress calls. Used
+                   if using advance_progress() and for correctly updating
+                   nested progress calls. Computed automatically when using
+                   update_progress_stage
+            label: Text to display in progress bar, or None to keep current
+                   or default label
+            title: Title text for the progress dialog, or None to keep current
+                   or default title
         """
 
         # If the stack is empty it means that start_progress() was not called.
@@ -131,9 +137,9 @@ class Progress:
         self._update_bar()
 
     def advance_progress(self,
-                         step: Optional[int] = None,
-                         label: Optional[str] = None,
-                         title: Optional[str] = None):
+                         step: int or None = None,
+                         label: str or None = None,
+                         title: str or None = None):
         """Move the progress bar along one stage
 
         Unspecified parameters for step, label or title will retain their
@@ -145,9 +151,12 @@ class Progress:
         the current value (0 if unspecified) and 100%
 
         Args:
-            step: Percentage difference between progress calls.
-            label: The label text to display by the progress
-            title: The title of the progress dialog
+            step:  Percentage difference between progress calls. None to keep
+                   current step value
+            label: Text to display in progress bar, or None to keep current
+                   or default label
+            title: Title text for the progress dialog, or None to keep current
+                   or default title
         """
 
         # If the stack is empty it means that start_progress() was not called.
@@ -173,8 +182,10 @@ class Progress:
                               num_stages: int,
                               label: str or None = None,
                               title: str or None = None):
-        """Update the progress bar by specifying the number of stages to
-        complete and the current stage being performed.
+        """Update progress for an operation consisting of a set number of stages
+
+        Specify the total number of stages to be performed and the current
+        stage number. The value and step will be computed automatically
 
         Unspecified parameters for label or title will retain their
         previous value
@@ -199,18 +210,19 @@ class Progress:
         return self.progress_bar.cancel_clicked()
 
     def check_for_cancel(self):
-        """Raise Cancel exception if user has clicked Cancel"""
+        """Raise Cancel exception if user has clicked Cancel in the progress
+        dialog"""
         if self.has_been_cancelled():
             self.reset_progress()
             raise UserCancelled()
 
     def reset_progress(self):
-        """Clear all progress nesting"""
+        """Close all progress bars and clear all progress nesting"""
         self._close_bar()
         self.stack.reset()
 
     def set_progress_parent(self, parent):
-        """Updates the parent control of the GUI progress dialog"""
+        """Set the GUI parent window handle for progress dialogs"""
         self.progress_bar.set_parent(parent)
 
     def _update_bar(self):
