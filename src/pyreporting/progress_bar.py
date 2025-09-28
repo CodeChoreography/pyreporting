@@ -1,47 +1,38 @@
-from enum import Enum
+"""Implementation of progress dialog handling for pyreporting package"""
+from enum import StrEnum, auto
 
 
 class ProgressBar:
     """Interface for progress bar implementations"""
 
-    def __init__(self, label: str = '', value: int = 0, title: str = '',
-                 total: int = 100, parent = None):
+    def __init__(self,
+                 parent=None,
+                 **kwargs  # pylint: disable=unused-argument
+                 ):
         """Initialise progress bar
 
         Args:
-            label: Text label in the progress bar
-            value: Initial value of the progress bar
-            title: The main heading in the progress bar, if there is one,
-                   or the dialog title
-            total: Maximum value of the progress bar
+            parent: when using a GUI, the parent object to whicih the progress
+                    bar should be attached
         """
-        self.bar = None
-        self.create(label=label, value=value, title=title, total=total,
-                    parent=parent)
+        self.parent = parent
 
     def __del__(self):
         """Progress bar destructor"""
         self.close()
 
-    def create(self, label: str = '', value: int = 0, title: str = '',
-               total: int = 100, parent=None):
-        """Create progress bar
-
-        Args:
-            label: Text label in the progress bar
-            value: Initial value of the progress bar
-            title: The main heading in the progress bar, if there is one,
-                   or the dialog title
-            total: Maximum value of the progress bar
-            parent: Handle to parent window, when using a GUI interface
-        """
-        raise NotImplementedError
+    def set_parent(self, parent):
+        """Set the parent object for GUI progress bars"""
+        self.parent = parent
 
     def close(self):
         """Destroy progress bar"""
         raise NotImplementedError
 
-    def update(self, label: str = None, value: int = None, title: str = None):
+    def update(self,
+               label: str or None = None,
+               value: int or None = None,
+               title: str or None = None):
         """Update progress bar
 
         Args:
@@ -62,12 +53,10 @@ class NoProgressBar(ProgressBar):
     Used when you want to use the pyreporting Reporting class but don't
     actually want a visible progress bar"""
 
-    def update(self, label: str = None, value: int = None, title: str = None,
-               parent=None):
-        pass
-
-    def create(self, label: str = '', value: int = 0, title: str = '',
-               total: int = 100, parent = None):
+    def update(self,
+               label: str or None = None,
+               value: int or None = None,
+               title: str or None = None):
         pass
 
     def close(self):
@@ -75,84 +64,64 @@ class NoProgressBar(ProgressBar):
 
     def cancel_clicked(self) -> bool:
         return False
-
-
-class PySideProgressBar(ProgressBar):
-    """A Pyside implementation of ProgressBar"""
-
-    def create(self, label: str = '', value: int = 0, title: str = '',
-               total: int = 100, parent=None):
-        from PySide6.QtWidgets import QProgressDialog
-        from PySide6.QtGui import Qt
-        self.bar = QProgressDialog(
-            parent=parent,
-            labelText=label,
-            minimum=0,
-            maximum=total
-        )
-        self.bar.setMinimumDuration(0)
-        self.bar.setAutoReset(False)
-        self.bar.setAutoClose(False)
-        self.bar.setWindowModality(Qt.WindowModal)
-        self.update(label=label, value=value, title=title)
-
-    def close(self):
-        if self.bar:
-            self.bar.close()
-            del self.bar
-            self.bar = None
-
-    def update(self, label: str = None, value: int = None, title: str = None):
-        if label is not None:
-            self.bar.setLabelText(label)
-        if value is not None:
-            self.bar.setValue(value)
-        if title is not None:
-            self.bar.setWindowTitle(title)
-
-    def cancel_clicked(self) -> bool:
-        return self.bar.wasCanceled()
 
 
 class TerminalProgressBar(ProgressBar):
     """A terminal dialog used to report progress information using enlighten"""
 
-    def create(self, label: str = '', value: int = 0,
-               title: str = '', total: int = 100, parent=None):
-        import enlighten
-        manager = enlighten.get_manager()
-        bar_format = '{desc}{desc_pad}{percentage:3.0f}%|{bar}|' \
-                     ' {count:{len_total}d}/{total:d}'
-        self.bar = manager.counter(
-            total=total,
-            desc=label,
-            leave=False,
-            bar_format=bar_format
-        )
-        self.update(label=label, value=value, title=title)
+    def __init__(self, **kwargs):
+        self.terminal_bar = None
+        super().__init__(**kwargs)
 
     def close(self):
-        if self.bar:
-            self.bar.close(clear=True)
-            self.bar = None
+        if self.terminal_bar:
+            self.terminal_bar.close(clear=True)
+            self.terminal_bar = None
 
-    def update(self, label: str = None, value: int = None, title: str = None):
+    def update(self,
+               label: str or None = None,
+               value: int or None = None,
+               title: str or None = None):
+        if not self.terminal_bar:
+            # pylint:disable-next=import-outside-toplevel
+            import enlighten
+            manager = enlighten.get_manager()
+            bar_format = '{desc}{desc_pad}{percentage:3.0f}%|{bar}|' \
+                         ' {count:{len_total}d}/{total:d}'
+            self.terminal_bar = manager.counter(
+                total=100,
+                desc=label,
+                leave=False,
+                bar_format=bar_format
+            )
+
         if label is not None:
-            self.bar.desc = label
+            self.terminal_bar.desc = label
         if value is not None:
-            self.bar.count = value
+            self.terminal_bar.count = value
         if value is not None or label is not None:
-            self.bar.update(incr=0)
+            self.terminal_bar.update(incr=0)
 
     def cancel_clicked(self):
         return False
 
 
-class ProgressBarType(Enum):
+class ProgressBarType(StrEnum):
     """Enum/factory for creating progress bars"""
-    NONE = NoProgressBar
-    QT = PySideProgressBar
-    TERMINAL = TerminalProgressBar
+    NONE = auto()
+    QT = auto()
+    TERMINAL = auto()
 
-    def make(self, **kwargs):
-        return self.value(**kwargs)
+    def make(self, **kwargs) -> ProgressBar:
+        """Factory method to create a ProgressBar of this type"""
+        if self == ProgressBarType.QT:
+            # Local import ensures pyside dependency only if required
+            # pylint:disable-next=import-outside-toplevel
+            from pyreporting.progress_bar_pyside import PySideProgressBar
+            return PySideProgressBar(**kwargs)
+        elif self == ProgressBarType.TERMINAL:
+            return TerminalProgressBar(**kwargs)
+        elif self == ProgressBarType.NONE:
+            return NoProgressBar(**kwargs)
+        else:
+            raise ValueError("Unknown ProgressBarType")
