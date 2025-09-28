@@ -27,7 +27,7 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/CodeChoreography/pyreporting#readme"
+Documentation = "https://CodeChoreography.github.io/pyreporting"
 Issues = "https://github.com/CodeChoreography/pyreporting/issues"
 Source = "https://github.com/CodeChoreography/pyreporting"
 

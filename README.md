@@ -14,6 +14,9 @@ Progress, error reporting and logging for Python
 - [API reference](https://codechoreography.github.io/pyreporting/_autosummary/pyreporting.html)
 - [Tutorial](https://codechoreography.github.io/pyreporting/tutorial.html)
 
+## Source code
+- [GitHub](https://github.com/CodeChoreography/pyreporting)
+
 ## License
 
 See [license file](https://github.com/CodeChoreography/pyreporting/blob/main/LICENSE)
