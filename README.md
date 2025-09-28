@@ -6,3 +6,15 @@
 [![Publish](https://github.com/CodeChoreography/pyreporting/actions/workflows/publish.yml/badge.svg)](https://github.com/CodeChoreography/pyreporting/actions/workflows/publish.yml)
 
 Progress, error reporting and logging for Python
+
+## Documentation
+
+See [documentation](https:/CodeChoreography.github.io/pyreporting)
+
+## License
+
+See [license file](https://github.com/CodeChoreography/pyreporting/blob/main/LICENSE)
+
+## Copyright
+
+&copy; 2025 Code Choreography Limited
