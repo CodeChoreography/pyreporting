@@ -37,7 +37,10 @@ source = "vcs"
 [project.optional-dependencies]
 tests = ["pytest"]
 pyside = ["pyside6"]
-lint = ["pylint"]
+lint = [
+  "pylint",
+  "pyside6"
+]
 
 [tool.pytest.ini_options]
 pythonpath = [
@@ -51,6 +54,7 @@ disable=[
   'too-many-arguments',
   'too-many-positional-arguments',
   'too-few-public-methods',
-  'too-many-public-methods'
+  'too-many-public-methods',
+  'no-name-in-module',
 ]
 
