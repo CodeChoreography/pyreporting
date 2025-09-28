@@ -5,12 +5,13 @@
 [![lint](https://github.com/CodeChoreography/pyreporting/actions/workflows/lint.yml/badge.svg)](https://github.com/CodeChoreography/pyreporting/actions/workflows/lint.yml)
 [![Publish](https://github.com/CodeChoreography/pyreporting/actions/workflows/publish.yml/badge.svg)](https://github.com/CodeChoreography/pyreporting/actions/workflows/publish.yml)
 [![Docs](https://github.com/CodeChoreography/pyreporting/actions/workflows/docs.yml/badge.svg)](https://github.com/CodeChoreography/pyreporting/actions/workflows/docs.yml)
+
 Progress, error reporting and logging for Python
 
 ## Documentation
 
 - [documentation](https://CodeChoreography.github.io/pyreporting)
-- [API reference](https://CodeChoreography.github.io/pyreporting_autosummary/pyreporting.html)
+- [API reference](https://codechoreography.github.io/pyreporting/_autosummary/pyreporting.html)
 - [Tutorial](https://codechoreography.github.io/pyreporting/tutorial.html)
 
 ## License
