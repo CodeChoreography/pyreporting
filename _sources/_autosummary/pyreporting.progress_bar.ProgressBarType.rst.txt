@@ -1,0 +1,80 @@
+pyreporting.progress\_bar.ProgressBarType
+=========================================
+
+.. currentmodule:: pyreporting.progress_bar
+
+.. autoclass:: ProgressBarType
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~ProgressBarType.encode
+      ~ProgressBarType.replace
+      ~ProgressBarType.split
+      ~ProgressBarType.rsplit
+      ~ProgressBarType.join
+      ~ProgressBarType.capitalize
+      ~ProgressBarType.casefold
+      ~ProgressBarType.title
+      ~ProgressBarType.center
+      ~ProgressBarType.count
+      ~ProgressBarType.expandtabs
+      ~ProgressBarType.find
+      ~ProgressBarType.partition
+      ~ProgressBarType.index
+      ~ProgressBarType.ljust
+      ~ProgressBarType.lower
+      ~ProgressBarType.lstrip
+      ~ProgressBarType.rfind
+      ~ProgressBarType.rindex
+      ~ProgressBarType.rjust
+      ~ProgressBarType.rstrip
+      ~ProgressBarType.rpartition
+      ~ProgressBarType.splitlines
+      ~ProgressBarType.strip
+      ~ProgressBarType.swapcase
+      ~ProgressBarType.translate
+      ~ProgressBarType.upper
+      ~ProgressBarType.startswith
+      ~ProgressBarType.endswith
+      ~ProgressBarType.removeprefix
+      ~ProgressBarType.removesuffix
+      ~ProgressBarType.isascii
+      ~ProgressBarType.islower
+      ~ProgressBarType.isupper
+      ~ProgressBarType.istitle
+      ~ProgressBarType.isspace
+      ~ProgressBarType.isdecimal
+      ~ProgressBarType.isdigit
+      ~ProgressBarType.isnumeric
+      ~ProgressBarType.isalpha
+      ~ProgressBarType.isalnum
+      ~ProgressBarType.isidentifier
+      ~ProgressBarType.isprintable
+      ~ProgressBarType.zfill
+      ~ProgressBarType.format
+      ~ProgressBarType.format_map
+      ~ProgressBarType.maketrans
+      ~ProgressBarType.make
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ProgressBarType.NONE
+      ~ProgressBarType.QT
+      ~ProgressBarType.TERMINAL
+   
+   

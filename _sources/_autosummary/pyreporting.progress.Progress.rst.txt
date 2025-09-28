@@ -1,0 +1,33 @@
+pyreporting.progress.Progress
+=============================
+
+.. currentmodule:: pyreporting.progress
+
+.. autoclass:: Progress
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~Progress.advance_progress
+      ~Progress.check_for_cancel
+      ~Progress.complete_progress
+      ~Progress.has_been_cancelled
+      ~Progress.reset_progress
+      ~Progress.set_progress_parent
+      ~Progress.start_progress
+      ~Progress.update_progress
+      ~Progress.update_progress_stage
+   
+   
+
+   
+   
+   

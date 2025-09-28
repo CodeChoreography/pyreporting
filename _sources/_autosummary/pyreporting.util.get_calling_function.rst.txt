@@ -1,0 +1,6 @@
+pyreporting.util.get\_calling\_function
+=======================================
+
+.. currentmodule:: pyreporting.util
+
+.. autofunction:: get_calling_function

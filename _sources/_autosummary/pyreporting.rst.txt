@@ -1,0 +1,35 @@
+﻿pyreporting
+===========
+
+.. automodule:: pyreporting
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+   logger
+   progress
+   progress_bar
+   progress_bar_pyside
+   reporting
+   util
+

@@ -1,0 +1,49 @@
+pyreporting.reporting.Reporting
+===============================
+
+.. currentmodule:: pyreporting.reporting
+
+.. autoclass:: Reporting
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~Reporting.advance_progress
+      ~Reporting.check_for_cancel
+      ~Reporting.complete_progress
+      ~Reporting.debug
+      ~Reporting.default_error
+      ~Reporting.default_warning
+      ~Reporting.end_message_caching
+      ~Reporting.error
+      ~Reporting.has_been_cancelled
+      ~Reporting.info
+      ~Reporting.open_path
+      ~Reporting.reset_progress
+      ~Reporting.set_progress_parent
+      ~Reporting.start_message_caching
+      ~Reporting.start_progress
+      ~Reporting.update_progress
+      ~Reporting.update_progress_stage
+      ~Reporting.warning
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Reporting.CancelErrorId
+      ~Reporting.USE_TERMINAL_PROGRESS
+   
+   

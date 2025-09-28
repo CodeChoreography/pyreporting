@@ -1,0 +1,28 @@
+pyreporting.progress\_bar.NoProgressBar
+=======================================
+
+.. currentmodule:: pyreporting.progress_bar
+
+.. autoclass:: NoProgressBar
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~NoProgressBar.cancel_clicked
+      ~NoProgressBar.close
+      ~NoProgressBar.set_parent
+      ~NoProgressBar.update
+   
+   
+
+   
+   
+   

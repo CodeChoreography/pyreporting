@@ -1,0 +1,33 @@
+pyreporting.progress.ProgressStack
+==================================
+
+.. currentmodule:: pyreporting.progress
+
+.. autoclass:: ProgressStack
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~ProgressStack.advance
+      ~ProgressStack.current_label
+      ~ProgressStack.current_title
+      ~ProgressStack.current_value
+      ~ProgressStack.is_empty
+      ~ProgressStack.pop
+      ~ProgressStack.push
+      ~ProgressStack.reset
+      ~ProgressStack.update
+   
+   
+
+   
+   
+   

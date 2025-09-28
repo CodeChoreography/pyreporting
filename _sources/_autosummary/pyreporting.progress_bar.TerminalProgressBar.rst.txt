@@ -1,0 +1,28 @@
+pyreporting.progress\_bar.TerminalProgressBar
+=============================================
+
+.. currentmodule:: pyreporting.progress_bar
+
+.. autoclass:: TerminalProgressBar
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~TerminalProgressBar.cancel_clicked
+      ~TerminalProgressBar.close
+      ~TerminalProgressBar.set_parent
+      ~TerminalProgressBar.update
+   
+   
+
+   
+   
+   

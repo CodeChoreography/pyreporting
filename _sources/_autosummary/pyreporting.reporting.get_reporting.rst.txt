@@ -1,0 +1,6 @@
+pyreporting.reporting.get\_reporting
+====================================
+
+.. currentmodule:: pyreporting.reporting
+
+.. autofunction:: get_reporting

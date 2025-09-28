@@ -1,0 +1,42 @@
+pyreporting.reporting
+=====================
+
+.. automodule:: pyreporting.reporting
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      configure_reporting
+      get_reporting
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: custom-class-template.rst
+      :nosignatures:
+   
+      RecordCache
+      Reporting
+   
+   
+
+   
+   
+   
+
+
+

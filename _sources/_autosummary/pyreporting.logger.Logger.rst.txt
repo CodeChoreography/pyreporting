@@ -1,0 +1,26 @@
+pyreporting.logger.Logger
+=========================
+
+.. currentmodule:: pyreporting.logger
+
+.. autoclass:: Logger
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~Logger.default_log
+      ~Logger.log
+   
+   
+
+   
+   
+   

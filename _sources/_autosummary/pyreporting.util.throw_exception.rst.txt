@@ -1,0 +1,6 @@
+pyreporting.util.throw\_exception
+=================================
+
+.. currentmodule:: pyreporting.util
+
+.. autofunction:: throw_exception

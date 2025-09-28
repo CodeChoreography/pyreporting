@@ -1,0 +1,6 @@
+pyreporting.util.open\_path
+===========================
+
+.. currentmodule:: pyreporting.util
+
+.. autofunction:: open_path

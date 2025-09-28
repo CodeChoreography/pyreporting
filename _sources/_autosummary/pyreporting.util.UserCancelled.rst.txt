@@ -1,0 +1,6 @@
+pyreporting.util.UserCancelled
+==============================
+
+.. currentmodule:: pyreporting.util
+
+.. autoexception:: UserCancelled

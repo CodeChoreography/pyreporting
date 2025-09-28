@@ -1,0 +1,41 @@
+pyreporting.util
+================
+
+.. automodule:: pyreporting.util
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      get_calling_function
+      open_path
+      throw_exception
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+      :toctree:
+   
+      ReportingException
+      UserCancelled
+   
+   
+
+
+

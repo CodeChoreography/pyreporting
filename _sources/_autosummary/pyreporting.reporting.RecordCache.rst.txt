@@ -1,0 +1,26 @@
+pyreporting.reporting.RecordCache
+=================================
+
+.. currentmodule:: pyreporting.reporting
+
+.. autoclass:: RecordCache
+   :members:
+   :show-inheritance:
+   :inherited-members:
+   :special-members: __call__, __add__, __mul__
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~RecordCache.add
+      ~RecordCache.show_and_clear
+   
+   
+
+   
+   
+   

@@ -1,0 +1,6 @@
+pyreporting.reporting.configure\_reporting
+==========================================
+
+.. currentmodule:: pyreporting.reporting
+
+.. autofunction:: configure_reporting

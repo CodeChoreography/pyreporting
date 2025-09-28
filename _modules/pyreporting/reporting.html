@@ -1,0 +1,910 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyreporting.reporting &#8212; pyreporting  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydata-custom.css?v=c27e38e3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyreporting/reporting';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyreporting  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorial.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../_autosummary/pyreporting.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorial.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../_autosummary/pyreporting.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pyreporting.reporting</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pyreporting.reporting</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Error, message and progress reporting&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEBUG</span><span class="p">,</span> <span class="n">ERROR</span><span class="p">,</span> <span class="n">INFO</span><span class="p">,</span> <span class="n">WARNING</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyreporting.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyreporting.progress</span><span class="w"> </span><span class="kn">import</span> <span class="n">Progress</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyreporting.progress_bar</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProgressBar</span><span class="p">,</span> <span class="n">ProgressBarType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyreporting.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">open_path</span><span class="p">,</span> <span class="n">throw_exception</span>
+
+
+<div class="viewcode-block" id="Reporting">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Reporting</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides error, message and progress reporting.</span>
+
+<span class="sd">    Reporting is a class used to process errors, warnings, messages,</span>
+<span class="sd">    logging information and progress bars. This means that warnings,</span>
+<span class="sd">    errors and progress are handled via a callback instead of</span>
+<span class="sd">    directly bringing up message boxes and progress boxes or writing to the</span>
+<span class="sd">    command window. This allows applications to choose how they</span>
+<span class="sd">    process error, warning and progress information.</span>
+
+<span class="sd">    Typically, a single Reporting object is created during application startup,</span>
+<span class="sd">    and passed into the classes and functions that use it. This means that</span>
+<span class="sd">    logging and progress reporting are handled in a single place, allowing for</span>
+<span class="sd">    consistent behaviour across the application and more advanced features such</span>
+<span class="sd">    as nested progress dialogs.</span>
+
+<span class="sd">    The default Reporting implementation uses the standard python logging</span>
+<span class="sd">    library, so standard logging calls should also work.</span>
+
+<span class="sd">    Progress can be provided via a console progress bar (TerminalProgress) for</span>
+<span class="sd">    terminal applications, or a windowed progress bar for GUI applications.</span>
+
+<span class="sd">    You can create your own implementation of the Reporting interface to get</span>
+<span class="sd">    customised message and progress behaviour; for example, if you are running</span>
+<span class="sd">    a batch script you may wish it to run silently, whereas for a GUI</span>
+<span class="sd">    application you may wish to display error, warning and progress dialogs</span>
+<span class="sd">    to the user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CancelErrorId</span> <span class="o">=</span> <span class="s1">&#39;CoreReporting:UserCancel&#39;</span>
+
+    <span class="n">USE_TERMINAL_PROGRESS</span> <span class="o">=</span> <span class="s2">&quot;USER_TERMINAL_PROGRESS&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">app_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;pyreporting_default&quot;</span><span class="p">,</span>
+            <span class="n">progress_type</span><span class="p">:</span> <span class="n">ProgressBarType</span> <span class="ow">or</span> <span class="n">ProgressBar</span> <span class="o">=</span>
+            <span class="n">ProgressBarType</span><span class="o">.</span><span class="n">TERMINAL</span><span class="p">,</span>
+            <span class="n">log_file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">interactive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            app_name: Application name to use when creating log file directory</span>
+<span class="sd">            progress_type: Either an object implementing the Progress</span>
+<span class="sd">                 interface, None for no progress, or a ProgressBarType enum</span>
+<span class="sd">                 which will be used to determine which progress bar to create</span>
+<span class="sd">            log_file_name: Specify log filename instead of using default</span>
+<span class="sd">                application log file directory based on app_name</span>
+<span class="sd">            debug: set to True to log debug messages</span>
+<span class="sd">            interactive: set to True if used in an interactive environment,</span>
+<span class="sd">                         allowing for example windows to be opened</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">progress_type</span><span class="p">,</span> <span class="p">(</span><span class="n">ProgressBar</span><span class="p">,</span> <span class="n">ProgressBarType</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;progress_type should be a ProgressBar or &quot;</span>
+                             <span class="s2">&quot;ProgressBarType enum&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span> <span class="o">=</span> <span class="n">Progress</span><span class="p">(</span><span class="n">progress_type</span><span class="o">=</span><span class="n">progress_type</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span>
+            <span class="n">app_name</span><span class="o">=</span><span class="n">app_name</span><span class="p">,</span>
+            <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span>
+            <span class="n">log_filename</span><span class="o">=</span><span class="n">log_file_name</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app_name</span> <span class="o">=</span> <span class="n">app_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">RecordCache</span><span class="p">(</span><span class="n">log_function</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enabled_cache_types</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interactive</span> <span class="o">=</span> <span class="n">interactive</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_message_caching</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Reporting.debug">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.debug">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+              <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+              <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+              <span class="n">supplementary_info</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+              <span class="n">exception</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write debugging information to the console and log file&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+            <span class="n">level</span><span class="o">=</span><span class="n">DEBUG</span><span class="p">,</span>
+            <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;Debug info&quot;</span><span class="p">,</span>
+            <span class="n">identifier</span><span class="o">=</span><span class="n">identifier</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+            <span class="n">supplementary_info</span><span class="o">=</span><span class="n">supplementary_info</span><span class="p">,</span>
+            <span class="n">exception</span><span class="o">=</span><span class="n">exception</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reporting.info">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.info">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+             <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+             <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+             <span class="n">supplementary_info</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+             <span class="n">exception</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write an information message to the console and log file&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">INFO</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">enabled_cache_types</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+                <span class="n">level</span><span class="o">=</span><span class="n">INFO</span><span class="p">,</span>
+                <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;Info&quot;</span><span class="p">,</span>
+                <span class="n">identifier</span><span class="o">=</span><span class="n">identifier</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+                <span class="n">supplementary_info</span><span class="o">=</span><span class="n">supplementary_info</span><span class="p">,</span>
+                <span class="n">exception</span><span class="o">=</span><span class="n">exception</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+                <span class="n">level</span><span class="o">=</span><span class="n">INFO</span><span class="p">,</span>
+                <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;Info&quot;</span><span class="p">,</span>
+                <span class="n">identifier</span><span class="o">=</span><span class="n">identifier</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+                <span class="n">supplementary_info</span><span class="o">=</span><span class="n">supplementary_info</span><span class="p">,</span>
+                <span class="n">exception</span><span class="o">=</span><span class="n">exception</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reporting.warning">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.warning">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">supplementary_info</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">exception</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write a warning message to the console and log file&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">WARNING</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">enabled_cache_types</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+                <span class="n">level</span><span class="o">=</span><span class="n">WARNING</span><span class="p">,</span>
+                <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;Warning&quot;</span><span class="p">,</span>
+                <span class="n">identifier</span><span class="o">=</span><span class="n">identifier</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+                <span class="n">supplementary_info</span><span class="o">=</span><span class="n">supplementary_info</span><span class="p">,</span>
+                <span class="n">exception</span><span class="o">=</span><span class="n">exception</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+                <span class="n">level</span><span class="o">=</span><span class="n">WARNING</span><span class="p">,</span>
+                <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;Warning&quot;</span><span class="p">,</span>
+                <span class="n">identifier</span><span class="o">=</span><span class="n">identifier</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+                <span class="n">supplementary_info</span><span class="o">=</span><span class="n">supplementary_info</span><span class="p">,</span>
+                <span class="n">exception</span><span class="o">=</span><span class="n">exception</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reporting.error">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.error">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+              <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+              <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+              <span class="n">supplementary_info</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">exception</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">throw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write an error message to the console and log file.</span>
+<span class="sd">        If throw is True, this will also raise an exception. Where appropriate,</span>
+<span class="sd">        the application should catch this exception and present the message to</span>
+<span class="sd">        the user e.g. using a modal error dialog&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+            <span class="n">level</span><span class="o">=</span><span class="n">ERROR</span><span class="p">,</span>
+            <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span>
+            <span class="n">identifier</span><span class="o">=</span><span class="n">identifier</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+            <span class="n">supplementary_info</span><span class="o">=</span><span class="n">supplementary_info</span><span class="p">,</span>
+            <span class="n">exception</span><span class="o">=</span><span class="n">exception</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">throw</span><span class="p">:</span>
+            <span class="n">throw_exception</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span> <span class="n">identifier</span><span class="o">=</span><span class="n">identifier</span><span class="p">,</span>
+                            <span class="n">exception</span><span class="o">=</span><span class="n">exception</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reporting.default_error">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.default_error">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_error</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                      <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                      <span class="n">supplementary_info</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                      <span class="n">exception</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                      <span class="n">throw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write an error message to the console and log file.</span>
+<span class="sd">        If throw is True, this will also raise an exception. Where appropriate,</span>
+<span class="sd">        the application should catch this exception and present the message to</span>
+<span class="sd">        the user e.g. using a modal error dialog&quot;&quot;&quot;</span>
+        <span class="n">Logger</span><span class="o">.</span><span class="n">default_log</span><span class="p">(</span>
+            <span class="n">level</span><span class="o">=</span><span class="n">ERROR</span><span class="p">,</span>
+            <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span>
+            <span class="n">identifier</span><span class="o">=</span><span class="n">identifier</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+            <span class="n">supplementary_info</span><span class="o">=</span><span class="n">supplementary_info</span><span class="p">,</span>
+            <span class="n">exception</span><span class="o">=</span><span class="n">exception</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">throw</span><span class="p">:</span>
+            <span class="n">throw_exception</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span> <span class="n">identifier</span><span class="o">=</span><span class="n">identifier</span><span class="p">,</span>
+                            <span class="n">exception</span><span class="o">=</span><span class="n">exception</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reporting.default_warning">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.default_warning">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_warning</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="n">supplementary_info</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                        <span class="n">exception</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write a warning message to the console and log file&quot;&quot;&quot;</span>
+        <span class="n">Logger</span><span class="o">.</span><span class="n">default_log</span><span class="p">(</span>
+            <span class="n">level</span><span class="o">=</span><span class="n">WARNING</span><span class="p">,</span>
+            <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;Warning&quot;</span><span class="p">,</span>
+            <span class="n">identifier</span><span class="o">=</span><span class="n">identifier</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+            <span class="n">supplementary_info</span><span class="o">=</span><span class="n">supplementary_info</span><span class="p">,</span>
+            <span class="n">exception</span><span class="o">=</span><span class="n">exception</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reporting.start_message_caching">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.start_message_caching">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_message_caching</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cache_types</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable message caching to prevent duplicate log messages</span>
+
+<span class="sd">        This typically is used with WARNING and INFO messages.</span>
+
+<span class="sd">        When caching is on, messages will not be displayed or logged but will</span>
+<span class="sd">        be added to the cache.</span>
+
+<span class="sd">        When show_and_clear_pending_messages() is called, the messages in the</span>
+<span class="sd">        cache will be displayed, but messages with the same identifier will</span>
+<span class="sd">        only be shown once, with the message modified to show how many times</span>
+<span class="sd">        the message was generated.</span>
+
+<span class="sd">        This helps to stop the command window or log file being overwhelmed</span>
+<span class="sd">        with duplicate warning or info messages</span>
+
+<span class="sd">        Start caching messages of specified types (typically WARNING and</span>
+<span class="sd">        INFO). Instead of immediately displaying/logging these messages, they</span>
+<span class="sd">        will be grouped to prevent multiple messages of the same type from</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            cache_types: list of warning levels to cache. Currently supports</span>
+<span class="sd">                WARNING and INFO.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enabled_cache_types</span> <span class="o">=</span> <span class="n">cache_types</span> <span class="k">if</span> <span class="n">cache_types</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> \
+            <span class="k">else</span> <span class="p">[</span><span class="n">INFO</span><span class="p">,</span> <span class="n">WARNING</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Reporting.end_message_caching">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.end_message_caching">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">end_message_caching</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;End the message caching started by end_message_caching()</span>
+
+<span class="sd">        This will show any pending error or warning log messages, with adjusted</span>
+<span class="sd">        message text to show the number of repetitions of duplicate messages.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">show_and_clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enabled_cache_types</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+
+<div class="viewcode-block" id="Reporting.start_progress">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.start_progress">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                       <span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">step</span><span class="p">:</span> <span class="nb">int</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise and show progress dialog reporting. If a progress</span>
+<span class="sd">        dialog is already visible, creates a nested progress level.</span>
+
+<span class="sd">        Each start_progress() call must be matched by exactly one</span>
+<span class="sd">        complete_progress() call</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value: Current progress bar value, or set to None for a continuous</span>
+<span class="sd">                   progress bar (if supported)</span>
+<span class="sd">            step:  Percentage difference between progress calls. This is used</span>
+<span class="sd">                   when calling advance_progress() and for correctly updating</span>
+<span class="sd">                   nested progress calls</span>
+<span class="sd">            label: Text to display in progress bar, or None to keep current</span>
+<span class="sd">                   or default label</span>
+<span class="sd">            title: Title text for the progress dialog, or None to keep current</span>
+<span class="sd">                   or default title</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">start_progress</span><span class="p">(</span>
+            <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reporting.complete_progress">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.complete_progress">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">complete_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Complete the current progress dialog. If there are no other progress</span>
+<span class="sd">        bars currently nested then hide the dialog, otherwise return to the</span>
+<span class="sd">        parent progress and complete the current stage&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">complete_progress</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Reporting.update_progress">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.update_progress">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                        <span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="n">step</span><span class="p">:</span> <span class="nb">int</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update values in the progress dialog</span>
+
+<span class="sd">        Unspecified parameters for value, label or title will retain their</span>
+<span class="sd">        previous value.</span>
+
+<span class="sd">        If step is not specified, it will be computed automatically from the</span>
+<span class="sd">        difference between previous value updates. The step is used with</span>
+<span class="sd">        nested progress (push_progress and pop_progress) so that the range</span>
+<span class="sd">        of the nested progress will run between value and value + step</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value: Current progress bar value, or set to None for a continuous</span>
+<span class="sd">                   progress bar (if supported)</span>
+<span class="sd">            step:  Percentage difference between progress calls. Used</span>
+<span class="sd">                   if using advance_progress() and for correctly updating</span>
+<span class="sd">                   nested progress calls. Computed automatically when using</span>
+<span class="sd">                   update_progress_stage</span>
+<span class="sd">            label: Text to display in progress bar, or None to keep current</span>
+<span class="sd">                   or default label</span>
+<span class="sd">            title: Title text for the progress dialog, or None to keep current</span>
+<span class="sd">                   or default title</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">update_progress</span><span class="p">(</span>
+            <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">title</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reporting.advance_progress">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.advance_progress">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">advance_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                         <span class="n">step</span><span class="p">:</span> <span class="nb">int</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                         <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Move the progress bar along one stage</span>
+
+<span class="sd">        Unspecified parameters for step, label or title will retain their</span>
+<span class="sd">        previous value.</span>
+
+<span class="sd">        If step has not been specified in this call or in any previous call</span>
+<span class="sd">        for this nested progress bar, it will take an inferred value (if</span>
+<span class="sd">        one could be computed), otherwise it will be the difference between</span>
+<span class="sd">        the current value (0 if unspecified) and 100%</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            step:  Percentage difference between progress calls. None to keep</span>
+<span class="sd">                   current step value</span>
+<span class="sd">            label: Text to display in progress bar, or None to keep current</span>
+<span class="sd">                   or default label</span>
+<span class="sd">            title: Title text for the progress dialog, or None to keep current</span>
+<span class="sd">                   or default title</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">advance_progress</span><span class="p">(</span>
+            <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">title</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reporting.update_progress_stage">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.update_progress_stage">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_progress_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                              <span class="n">stage</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                              <span class="n">num_stages</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                              <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="n">title</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update progress for an operation consisting of a set number of stages</span>
+
+<span class="sd">        Specify the total number of stages to be performed and the current</span>
+<span class="sd">        stage number. The value and step will be computed automatically</span>
+
+<span class="sd">        Unspecified parameters for label or title will retain their</span>
+<span class="sd">        previous value</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            stage: The index of the current stage</span>
+<span class="sd">            num_stages: Total number of stages</span>
+<span class="sd">            label: The label text to display by the progress, or None to keep</span>
+<span class="sd">                   current text</span>
+<span class="sd">            title: The title of the progress dialog, or None to keep current</span>
+<span class="sd">                   text</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">update_progress_stage</span><span class="p">(</span>
+            <span class="n">stage</span><span class="o">=</span><span class="n">stage</span><span class="p">,</span>
+            <span class="n">num_stages</span><span class="o">=</span><span class="n">num_stages</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">title</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reporting.has_been_cancelled">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.has_been_cancelled">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_been_cancelled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if the user has clicked Cancel in the progress dialog&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">has_been_cancelled</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Reporting.check_for_cancel">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.check_for_cancel">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_for_cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Raise Cancel exception if user has clicked Cancel in the progress</span>
+<span class="sd">        dialog&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">check_for_cancel</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Reporting.reset_progress">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.reset_progress">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reset_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close all progress bars and clear all progress nesting&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">reset_progress</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Reporting.set_progress_parent">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.set_progress_parent">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_progress_parent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the GUI parent window handle for progress dialogs&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">set_progress_parent</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Reporting.open_path">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.Reporting.html#pyreporting.reporting.Reporting.open_path">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Open an OS window to the specified file path&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">interactive</span><span class="p">:</span>
+            <span class="n">open_path</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="n">DEFAULT_REPORTING</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;Reporting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="get_reporting">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.get_reporting.html#pyreporting.reporting.get_reporting">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_reporting</span><span class="p">(</span><span class="n">error_if_not_configured</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Reporting</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the current default reporting object&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">DEFAULT_REPORTING</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">DEFAULT_REPORTING</span>
+    <span class="k">if</span> <span class="n">error_if_not_configured</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Default Reporting object has not been configured&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">configure_reporting</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="configure_reporting">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.configure_reporting.html#pyreporting.reporting.configure_reporting">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">configure_reporting</span><span class="p">(</span>
+        <span class="n">app_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;pyreporting_default&quot;</span><span class="p">,</span>
+        <span class="n">progress_type</span><span class="p">:</span> <span class="n">ProgressBarType</span> <span class="ow">or</span> <span class="n">ProgressBar</span>
+                       <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">ProgressBarType</span><span class="o">.</span><span class="n">TERMINAL</span><span class="p">,</span>
+        <span class="n">log_file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">debug</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Reporting</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configure the default reporting object</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        app_name: Application name</span>
+<span class="sd">        progress_type: enum of type ProgressBarType specifying the type of</span>
+<span class="sd">                       progress bar, or a custom ProgressBar implementation</span>
+<span class="sd">        log_file_name: Log to specified file instead of default</span>
+<span class="sd">        debug:         set to True if running in debug mode</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">DEFAULT_REPORTING</span>  <span class="c1"># pylint:disable=global-statement</span>
+    <span class="k">if</span> <span class="n">DEFAULT_REPORTING</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">DEFAULT_REPORTING</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+            <span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;Reporting:DefaultAlreadyConfigured&#39;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Reporting.configure_default() was called but the &#39;</span>
+                    <span class="s1">&#39;default Reporting object has already been configured&#39;</span><span class="p">,</span>
+            <span class="n">throw</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+    <span class="n">DEFAULT_REPORTING</span> <span class="o">=</span> <span class="n">Reporting</span><span class="p">(</span>
+        <span class="n">app_name</span><span class="o">=</span><span class="n">app_name</span><span class="p">,</span>
+        <span class="n">progress_type</span><span class="o">=</span><span class="n">progress_type</span><span class="p">,</span>
+        <span class="n">log_file_name</span><span class="o">=</span><span class="n">log_file_name</span><span class="p">,</span>
+        <span class="n">debug</span><span class="o">=</span><span class="n">debug</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">DEFAULT_REPORTING</span></div>
+
+
+
+<div class="viewcode-block" id="RecordCache">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.RecordCache.html#pyreporting.reporting.RecordCache">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">RecordCache</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Keeps track of cached messages&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="RecordCache.PendingRecord">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.RecordCache.html#pyreporting.reporting.RecordCache.PendingRecord">[docs]</a>
+    <span class="nd">@dataclass</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">PendingRecord</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Record of specific cached messages&quot;&quot;&quot;</span>
+        <span class="n">level</span><span class="p">:</span> <span class="nb">int</span>
+        <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>
+        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span>
+        <span class="n">text</span><span class="p">:</span> <span class="nb">str</span>
+        <span class="n">supplementary_info</span><span class="p">:</span> <span class="nb">str</span>
+        <span class="n">exception</span><span class="p">:</span> <span class="ne">Exception</span>
+        <span class="n">count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_function</span> <span class="o">=</span> <span class="n">log_function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="RecordCache.add">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.RecordCache.html#pyreporting.reporting.RecordCache.add">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">supplementary_info</span><span class="p">,</span>
+            <span class="n">exception</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add message to cache&quot;&quot;&quot;</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">level</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">RecordCache</span><span class="o">.</span><span class="n">PendingRecord</span><span class="p">(</span>
+                <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span>
+                <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span>
+                <span class="n">identifier</span><span class="o">=</span><span class="n">identifier</span><span class="p">,</span>
+                <span class="n">text</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+                <span class="n">supplementary_info</span><span class="o">=</span><span class="n">supplementary_info</span><span class="p">,</span>
+                <span class="n">exception</span><span class="o">=</span><span class="n">exception</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RecordCache.show_and_clear">
+<a class="viewcode-back" href="../../_autosummary/pyreporting.reporting.RecordCache.html#pyreporting.reporting.RecordCache.show_and_clear">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_and_clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear the message cache and report all messages&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">record</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">text</span>
+            <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;(repeated x</span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">count</span><span class="si">}</span><span class="s1">) </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_function</span><span class="p">(</span>
+                <span class="n">level</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">level</span><span class="p">,</span>
+                <span class="n">prefix</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span>
+                <span class="n">identifier</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+                <span class="n">supplementary_info</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">supplementary_info</span><span class="p">,</span>
+                <span class="n">exception</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">exception</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Code Choreography Limited.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>
