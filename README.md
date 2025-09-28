@@ -10,7 +10,7 @@ Progress, error reporting and logging for Python
 
 ## Documentation
 
-- [documentation](https://CodeChoreography.github.io/pyreporting)
+- [Documentation homepage](https://CodeChoreography.github.io/pyreporting)
 - [API reference](https://codechoreography.github.io/pyreporting/_autosummary/pyreporting.html)
 - [Tutorial](https://codechoreography.github.io/pyreporting/tutorial.html)
 
