@@ -1,3 +1,4 @@
+"""Helper class for logging with the pyreporting package"""
 import logging
 from os.path import join
 from pathlib import Path
@@ -9,6 +10,8 @@ from pyreporting.util import get_calling_function
 
 
 class Logger:
+    """Helper class for logging with the pyreporting package"""
+
     def __init__(self, app_name: Optional[str] = None,
                  debug: bool = False, log_filename: Optional[str] = None):
         """Initialise logging to console and log file.
@@ -45,6 +48,7 @@ class Logger:
             file_handler.setFormatter(formatter)
             self.logger.addHandler(file_handler)
 
+        # pylint:disable-next=logging-fstring-interpolation
         self.logger.info(f"Log file for {app_name} {log_filename}")
 
     def log(self, level: int, prefix: str, identifier: str, message: str,
