@@ -16,8 +16,6 @@ authors = [
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: Implementation :: CPython",
@@ -38,8 +36,21 @@ source = "vcs"
 
 [project.optional-dependencies]
 tests = ["pytest"]
+pyside = ["pyside6"]
+lint = ["pylint"]
 
 [tool.pytest.ini_options]
 pythonpath = [
   "src",
 ]
+
+[tool.pylint.'MESSAGES CONTROL']
+disable=[
+  'no-else-return',
+  'no-else-raise',
+  'too-many-arguments',
+  'too-many-positional-arguments',
+  'too-few-public-methods',
+  'too-many-public-methods'
+]
+
