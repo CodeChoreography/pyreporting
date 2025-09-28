@@ -1,3 +1,4 @@
+"""Utility functions for the pyreporting package"""
 import inspect
 import itertools
 import os
@@ -35,6 +36,7 @@ def get_calling_function(levels_to_ignore):
 
 
 def throw_exception(identifier, message, exception=None):
+    """Raise an exception, optionally extending from the provided exception"""
     if exception:
         raise ReportingException(message=message, identifier=identifier) \
             from exception
@@ -43,6 +45,7 @@ def throw_exception(identifier, message, exception=None):
 
 
 def open_path(folder_path: str):
+    """Open an OS window to the user showing the specified folder"""
     platform = sys.platform
     if platform == 'Windows':
         os.startfile(folder_path)
