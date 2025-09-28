@@ -9,7 +9,7 @@ Progress, error reporting and logging for Python
 
 ## Documentation
 
-See [documentation](https:/CodeChoreography.github.io/pyreporting)
+See [documentation](https://CodeChoreography.github.io/pyreporting)
 
 ## License
 
